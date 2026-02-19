@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пункт відправлення:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editFrom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:inputType="textCapWords"
+        android:hint="Введіть місто" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Пункт прибуття:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:inputType="textCapWords"
+        android:hint="Введіть місто" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Оберіть час відправлення:"
+        android:textSize="16sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/radioMorning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ранок (08:00)" />
+
+        <RadioButton
+            android:id="@+id/radioDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="День (14:00)" />
+
+        <RadioButton
+            android:id="@+id/radioEvening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Вечір (21:00)" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="ОК" />
+
+</LinearLayout>
