@@ -28,6 +28,8 @@ class InputFragment : Fragment() {
         val editTo = view.findViewById<EditText>(R.id.editTo)
         val radioGroupTime = view.findViewById<RadioGroup>(R.id.radioGroupTime)
         val btnOk = view.findViewById<Button>(R.id.btnOk)
+        val btnOpenHistory = view.findViewById<Button>(R.id.btnOpenHistory)
+        val dbHelper = DatabaseHelper(requireContext())
 
         sharedViewModel.fromCity.observe(viewLifecycleOwner) { if (it.isEmpty()) editFrom.text.clear() }
         sharedViewModel.toCity.observe(viewLifecycleOwner) { if (it.isEmpty()) editTo.text.clear() }
@@ -42,16 +44,29 @@ class InputFragment : Fragment() {
                 Toast.makeText(requireContext(), "Завершіть введення всіх даних!", Toast.LENGTH_SHORT).show()
             } else {
                 val selectedRadio = view.findViewById<RadioButton>(checkedId)
+                val timeText = selectedRadio.text.toString()
+
+                val isInserted = dbHelper.insertRoute(fromText, toText, timeText)
+                if (isInserted) {
+                    Toast.makeText(requireContext(), "Маршрут успішно збережено в БД!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "Помилка збереження!", Toast.LENGTH_SHORT).show()
+                }
 
                 sharedViewModel.fromCity.value = fromText
                 sharedViewModel.toCity.value = toText
-                sharedViewModel.time.value = selectedRadio.text.toString()
+                sharedViewModel.time.value = timeText
 
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, ResultFragment())
                     .addToBackStack(null)
                     .commit()
             }
+        }
+
+        btnOpenHistory.setOnClickListener {
+            val intent = android.content.Intent(requireContext(), HistoryActivity::class.java)
+            startActivity(intent)
         }
     }
 }

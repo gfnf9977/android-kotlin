@@ -73,4 +73,11 @@
         android:layout_marginTop="24dp"
         android:text="ОК" />
 
+    <Button
+        android:id="@+id/btnOpenHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Відкрити історію" />
+
 </LinearLayout>
